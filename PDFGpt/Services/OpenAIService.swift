@@ -15,13 +15,28 @@ struct OpenAIService {
         case invalidAPIKey
     }
     
+    private var apiKey: String {
+      get {
+        guard let filePath = Bundle.main.path(forResource: "OpenAI-info", ofType: "plist") else {
+          fatalError("Couldn't find file 'OpenAI-info.plist'.")
+        }
+        let plist = NSDictionary(contentsOfFile: filePath)
+        guard let value = plist?.object(forKey: "API_KEY") as? String else {
+          fatalError("Couldn't find key 'API_KEY' in 'TMDB-Info.plist'.")
+        }
+          print(value)
+        return value
+      }
+    }
+    
+    
     func fetchModels() async throws -> OpenAIModelsReponse {
         
         let openAIURL = URL(string: "https://api.openai.com/v1/models")!
         
         var openAIRequest = URLRequest(url: openAIURL)
         
-        openAIRequest.setValue("Bearer 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",
+        openAIRequest.setValue("Bearer \(apiKey)",
                                forHTTPHeaderField: "Authorization")
         
         openAIRequest.setValue("application/json;charset=utf-8", forHTTPHeaderField: "Content-Type")
