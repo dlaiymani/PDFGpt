@@ -8,14 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var viewModel = OpenAIViewModel(service: OpenAIService())
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            switch viewModel.state {
+            case .success(let models):
+                ForEach(models.data, id: \.self) {model in
+                    Text("\(model.id)")
+                }
+                
+            case .loading:
+                ProgressView()
+                
+            default:
+                EmptyView()
+            }
         }
         .padding()
+        .task {
+            await viewModel.getModels()
+        }
     }
 }
 
