@@ -60,5 +60,48 @@ struct OpenAIService {
         
         return decodeData
             
-        }
     }
+
+
+func fetchCompletion(text: String) async throws -> OpenAICompletionModel {
+    
+    let openAIURL = URL(string: "https://api.openai.com/v1/chat/completions")!
+    
+    var openAIRequest = URLRequest(url: openAIURL)
+    
+    openAIRequest.httpMethod = "POST"
+    
+    openAIRequest.setValue("Bearer \(apiKey)",
+                           forHTTPHeaderField: "Authorization")
+    
+    openAIRequest.setValue("application/json;charset=utf-8", forHTTPHeaderField: "Content-Type")
+    
+    let completionBody = CompletionBody(model: "gpt-3.5-turbo",
+                                        messages: [Prompt(role: "user", content: text)],
+                                        temperature:  0.7)
+    
+    let jsonData = try JSONEncoder().encode(completionBody)
+    openAIRequest.httpBody = jsonData
+    
+    
+    //   var sessionConfiguration = URLSessionConfiguration.default
+    
+    // sessionConfiguration.httpAdditionalHeaders = [
+    //    "Authorization": "Bearer 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"
+    //]
+    
+    //let session = URLSession(configuration: sessionConfiguration)
+    
+    
+    let (data, response) = try await URLSession.shared.data(for: openAIRequest)
+    
+    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+        throw OpenAIError.invalidStatusCode
+    }
+    
+    let decodeData = try JSONDecoder().decode(OpenAICompletionModel.self, from: data)
+    
+    return decodeData
+        
+    }
+}

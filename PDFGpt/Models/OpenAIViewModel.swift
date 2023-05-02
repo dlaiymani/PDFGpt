@@ -14,7 +14,7 @@ class OpenAIViewModel: ObservableObject {
         case notAvailable
         case loading
         case success(data: OpenAIModelsReponse)
-       // case successForInfo(data: User)
+        case successForCompletion(data: OpenAICompletionModel)
         case failed(error: Error)
     }
     
@@ -33,6 +33,19 @@ class OpenAIViewModel: ObservableObject {
         do {
             let followers = try await service.fetchModels()
             self.state = .success(data: followers)
+        } catch {
+            self.state = .failed(error: error)
+            self.hasError = true
+            print(error)
+        }
+    }
+    
+    func getCompletion(text: String) async {
+        self.state = .loading
+        self.hasError = false
+        do {
+            let completion = try await service.fetchCompletion(text: text)
+            self.state = .successForCompletion(data: completion)
         } catch {
             self.state = .failed(error: error)
             self.hasError = true

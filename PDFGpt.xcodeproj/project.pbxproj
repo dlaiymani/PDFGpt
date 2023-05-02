@@ -11,6 +11,7 @@
 		AA7302A629FFF20200154324 /* OpenAIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7302A529FFF20200154324 /* OpenAIModels.swift */; };
 		AA7302A829FFF82500154324 /* OpenAIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7302A729FFF82500154324 /* OpenAIViewModel.swift */; };
 		AA7302AA29FFFCD900154324 /* OpenAI-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA7302A929FFFCD900154324 /* OpenAI-info.plist */; };
+		AA7302AC2A0191E600154324 /* OpenAICompletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7302AB2A0191E600154324 /* OpenAICompletionModel.swift */; };
 		AAE960E029FFA7CF000D756B /* PDFGptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE960DF29FFA7CF000D756B /* PDFGptApp.swift */; };
 		AAE960E229FFA7CF000D756B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE960E129FFA7CF000D756B /* ContentView.swift */; };
 		AAE960E429FFA7CF000D756B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE960E329FFA7CF000D756B /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		AA7302A529FFF20200154324 /* OpenAIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIModels.swift; sourceTree = "<group>"; };
 		AA7302A729FFF82500154324 /* OpenAIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIViewModel.swift; sourceTree = "<group>"; };
 		AA7302A929FFFCD900154324 /* OpenAI-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenAI-info.plist"; sourceTree = "<group>"; };
+		AA7302AB2A0191E600154324 /* OpenAICompletionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICompletionModel.swift; sourceTree = "<group>"; };
 		AAE960DC29FFA7CF000D756B /* PDFGpt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFGpt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE960DF29FFA7CF000D756B /* PDFGptApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGptApp.swift; sourceTree = "<group>"; };
 		AAE960E129FFA7CF000D756B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				AA7302A529FFF20200154324 /* OpenAIModels.swift */,
+				AA7302AB2A0191E600154324 /* OpenAICompletionModel.swift */,
 				AA7302A729FFF82500154324 /* OpenAIViewModel.swift */,
 			);
 			path = Models;
@@ -173,6 +176,7 @@
 				AA7302A629FFF20200154324 /* OpenAIModels.swift in Sources */,
 				AAE960E029FFA7CF000D756B /* PDFGptApp.swift in Sources */,
 				AA7302A229FFEF3700154324 /* OpenAIService.swift in Sources */,
+				AA7302AC2A0191E600154324 /* OpenAICompletionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

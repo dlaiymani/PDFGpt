@@ -19,6 +19,8 @@ struct ContentView: View {
                     Text("\(model.id)")
                 }
                 
+            case .successForCompletion(let completion):
+                Text(completion.choices[0].message.content)
             case .loading:
                 ProgressView()
                 
@@ -28,7 +30,8 @@ struct ContentView: View {
         }
         .padding()
         .task {
-            await viewModel.getModels()
+           // await viewModel.getModels()
+            await viewModel.getCompletion(text: "Write a tagline for an ice cream shop.")
         }
     }
 }
